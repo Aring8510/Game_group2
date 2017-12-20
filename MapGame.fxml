@@ -21,10 +21,10 @@
         <HBox prefHeight="92.0" prefWidth="528.0">
             <children>
                 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml">
-                    <Button onAction="#upButtonAction" text="↑" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <Button onAction="#leftButtonAction" text="←" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Button onAction="#rightButtonAction" text="→" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                    <Button onAction="#downButtonAction" text="↓" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Button focusTraversable="false" onAction="#upButtonAction" text="↑" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Button focusTraversable="false" onAction="#leftButtonAction" text="←" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Button focusTraversable="false" onAction="#rightButtonAction" text="→" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Button focusTraversable="false" onAction="#downButtonAction" text="↓" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints />
@@ -36,9 +36,9 @@
                         <RowConstraints />
                     </rowConstraints>
                 </GridPane>
-                <Button onAction="#func1ButtonAction" prefWidth="100" text="func1" />
-                <Button onAction="#func2ButtonAction" prefWidth="100" text="func2" />
-                <Button onAction="#func3ButtonAction" prefWidth="100" text="func3" />
+                <Button focusTraversable="false" onAction="#func1ButtonAction" prefWidth="100" text="func1" />
+                <Button focusTraversable="false" onAction="#func2ButtonAction" prefWidth="100" text="func2" />
+                <Button focusTraversable="false" onAction="#func3ButtonAction" prefWidth="100" text="func3" />
                   <ImageView fx:id="Wiz" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                 <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
                     <items>
