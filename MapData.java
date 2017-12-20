@@ -3,26 +3,28 @@ import javafx.scene.image.Image;
 public class MapData {
     public static final int TYPE_WALL   = 1;
     public static final int TYPE_NONE   = 0;
-    public static final int TYPE_OTHERS = 2;
+    public static final int TYPE_ITEM = 2;
+    public static final int TYPE_STEP = 3;
     public Image[] mapImage;
     private int[] map;
     private int[] map2image;
     private int width;
     private int height;
     private int item_count = 3;
-    static int get_item_count = 0;
-    static int floor_count =1;
 
     MapData(int x, int y){ 
-        mapImage = new Image[3];
-        mapImage[TYPE_NONE] = new Image("SPACE.png");
-        mapImage[TYPE_WALL] = new Image("WALL.png");
-        mapImage[TYPE_OTHERS] = new Image("mig.jpg");
+        mapImage = new Image[4];
+        mapImage[TYPE_NONE] = new Image("pic/SPACE.png");
+        mapImage[TYPE_WALL] = new Image("pic/WALL.png");
+        mapImage[TYPE_ITEM] = new Image("pic/mig.jpg");
+        mapImage[TYPE_STEP] = new Image("pic/step.png");
         width  = x;
         height = y;
         map = new int[y*x];
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
+        map[toIndex(19,13)] = TYPE_STEP;
+        setItem();
         /*マップ生成確認のためと思われる
           printMap();*/
     }
@@ -93,12 +95,14 @@ public class MapData {
                 digMap(x+dx*2, y+dy*2);
                 //穴を掘るついでにアイテムを追加
                 if(Math.random() < 0.3 && item_count>0){
-                    map[toIndex(x+dx,y+dy)] = MapData.TYPE_OTHERS;
+                    map[toIndex(x+dx,y+dy)] = MapData.TYPE_ITEM;
                     item_count--;
                 }
             }
 
         }
+    }
+    public void setItem(){
     }
 
     public void printMap(){

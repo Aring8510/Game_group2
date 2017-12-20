@@ -15,7 +15,6 @@ import java.nio.file.*;
 
 public class MapGame extends Application {
     Stage stage;
-    AudioClip clip;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -30,7 +29,7 @@ public class MapGame extends Application {
         Scene myScene = new Scene(myPane_top);
         //Play.play();
         primaryStage.setScene(myScene);
-        primaryStage.show();	
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
