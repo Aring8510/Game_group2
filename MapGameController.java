@@ -16,6 +16,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import javafx.scene.media.*;
+import java.nio.file.*;
 
 
 public class MapGameController implements Initializable {
@@ -30,6 +32,7 @@ public class MapGameController implements Initializable {
     private int sec = 0;
     private int min = 0;
     private int initCount = 1;
+    public ImageView Wiz;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,6 +42,31 @@ public class MapGameController implements Initializable {
     }
 
     private void init(){
+        AudioClip clip_1F;
+        AudioClip clip_2F;
+        AudioClip clip_3F;
+        AudioClip clip_4F;
+        clip_1F = new AudioClip(Paths.get("BGM/BGM_0.wav").toUri().toString());
+        clip_2F = new AudioClip(Paths.get("BGM/BGM_1.wav").toUri().toString());
+        clip_3F = new AudioClip(Paths.get("BGM/BGM_2.wav").toUri().toString());
+        clip_4F = new AudioClip(Paths.get("BGM/BGM_3.wav").toUri().toString());
+        switch(initCount){
+            case 1:
+                clip_1F.play();
+
+                break;
+            case 2:
+                clip_1F.stop();
+                clip_2F.play();
+                break;
+            case 3:
+                clip_2F.stop();
+                clip_3F.play();
+                break;
+            case 4 :
+                clip_3F.stop();
+                clip_4F.play();
+        }
         //マップの初期設定(縦15×横21マス)
         mapData = new MapData(21,15);
         //キャラクターの初期位置設定と画像設定
@@ -129,6 +157,87 @@ public class MapGameController implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+    public void printWizMap(){
+        int dir = chara.getCharaDir();
+        //0:Down
+        //1:Right
+        //2:Left
+        //3:Up
+        int x = chara.getPosX();
+        int y = chara.getPosY();
+        int front;
+        int ahead;
+        int right;
+        int left;
+        switch (dir){
+            case 0://Down
+                front = mapData.getMap(x,y+1);
+                ahead = mapData.getMap(x,y+2);
+                right = mapData.getMap(x-1,y+1);
+                left  = mapData.getMap(x+1,y+1);
+                Wiz.setImage(WizCheck(front,ahead,right,left));
+                break;
+            case 1://left
+                front = mapData.getMap(x-1,y);
+                ahead = mapData.getMap(x-2,y);
+                right = mapData.getMap(x-1,y-1);
+                left  = mapData.getMap(x-1,y+1);
+                Wiz.setImage(WizCheck(front,ahead,right,left));
+                break;
+            case 2://Right
+                front = mapData.getMap(x+1,y);
+                ahead = mapData.getMap(x+2,y);
+                right = mapData.getMap(x+1,y+1);
+                left  = mapData.getMap(x+1,y-1);
+                Wiz.setImage(WizCheck(front,ahead,right,left));
+                break;
+            case 3://Up
+                front = mapData.getMap(x,y-1);
+                ahead = mapData.getMap(x,y-2);
+                right = mapData.getMap(x+1,y-1);
+                left  = mapData.getMap(x-1,y-1);
+                Wiz.setImage(WizCheck(front,ahead,right,left));
+                break;
+        }
+    }
+    public Image WizCheck(int front, int ahead, int right, int left){
+        String s;
+        if (front == 0){
+            if (right == 0){
+                if (left == 0){
+                    if (ahead == 0){
+                        s = "pic/3.png";
+                    }else{
+                        s = "pic/6.png";
+                    }
+                }else{
+                    if (ahead == 0){
+                        s = "pic/2.png";
+                    }else{
+                        s = "pic/5.png";
+                    }
+                }
+            }else{
+                if (left == 0){
+                    if (ahead == 0){
+                        s = "pic/4.png";
+                    }else{
+                        s = "pic/8.png";
+                    }
+                }else{
+                    if (ahead == 0){
+                        s = "pic/0.png";
+                    }else{
+                        s = "pic/1.png";
+                    }
+                }
+            }
+        }else{
+            s = "pic/7.png";
+        }
+        Image i = new Image (getClass().getResourceAsStream(s));
+        return i; 
+    }
     public void timer(){
         Timeline timer = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
             clock.setText(String.format("%d:%02d",min,sec));
@@ -156,6 +265,7 @@ public class MapGameController implements Initializable {
                 }
             }
         }
+        printWizMap();
     }
 
     public void enemyPrint(final int prevX, final int prevY){
@@ -178,7 +288,7 @@ public class MapGameController implements Initializable {
             case UP    : upButtonAction();    break;
             case LEFT  : leftButtonAction();  break;
         }
-    }    
+    }
     public void downButtonAction(){
         //System.out.println("DOWN");
         chara.setCharaDir(MoveChara.TYPE_DOWN);
