@@ -20,18 +20,18 @@ public class MoveChara {
     MoveChara(int startX, int startY, MapData mapData){
         this.mapData = mapData;
         charaImage = new Image[12];
-        charaImage[0 * 3 + 0] = new Image("png//nekod1.png");
-        charaImage[0 * 3 + 1] = new Image("png//nekod2.png");
-        charaImage[0 * 3 + 2] = new Image("png//nekod3.png");
-        charaImage[1 * 3 + 0] = new Image("png//nekol1.png");
-        charaImage[1 * 3 + 1] = new Image("png//nekol2.png");
-        charaImage[1 * 3 + 2] = new Image("png//nekol3.png");
-        charaImage[2 * 3 + 0] = new Image("png//nekor1.png");
-        charaImage[2 * 3 + 1] = new Image("png//nekor2.png");
-        charaImage[2 * 3 + 2] = new Image("png//nekor3.png");
-        charaImage[3 * 3 + 0] = new Image("png//nekou1.png");
-        charaImage[3 * 3 + 1] = new Image("png//nekou2.png");
-        charaImage[3 * 3 + 2] = new Image("png//nekou3.png");
+        charaImage[0 * 3 + 0] = new Image("pic/nekod1.png");
+        charaImage[0 * 3 + 1] = new Image("pic/nekod2.png");
+        charaImage[0 * 3 + 2] = new Image("pic/nekod3.png");
+        charaImage[1 * 3 + 0] = new Image("pic/nekol1.png");
+        charaImage[1 * 3 + 1] = new Image("pic/nekol2.png");
+        charaImage[1 * 3 + 2] = new Image("pic/nekol3.png");
+        charaImage[2 * 3 + 0] = new Image("pic/nekor1.png");
+        charaImage[2 * 3 + 1] = new Image("pic/nekor2.png");
+        charaImage[2 * 3 + 2] = new Image("pic/nekor3.png");
+        charaImage[3 * 3 + 0] = new Image("pic/nekou1.png");
+        charaImage[3 * 3 + 1] = new Image("pic/nekou2.png");
+        charaImage[3 * 3 + 2] = new Image("pic/nekou3.png");
 
         posX = startX;
         posY = startY;

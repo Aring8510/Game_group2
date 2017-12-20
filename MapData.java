@@ -14,11 +14,10 @@ public class MapData {
 
     MapData(int x, int y){ 
         mapImage = new Image[4];
-        mapImage[TYPE_NONE] = new Image("SPACE.png");
-        mapImage[TYPE_WALL] = new Image("WALL.png");
-        mapImage[TYPE_ITEM] = new Image("mig.jpg");
-        mapImage[TYPE_STEP] = new Image("SPACE.png");
-        //mapImage[TYPE_STEP] = new Image("step.png");
+        mapImage[TYPE_NONE] = new Image("pic/SPACE.png");
+        mapImage[TYPE_WALL] = new Image("pic/WALL.png");
+        mapImage[TYPE_ITEM] = new Image("pic/mig.jpg");
+        mapImage[TYPE_STEP] = new Image("pic/step.png");
         width  = x;
         height = y;
         map = new int[y*x];
