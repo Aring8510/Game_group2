@@ -18,13 +18,13 @@
     </padding>
 
     <children>
-        <HBox prefHeight="92.0" prefWidth="528.0">
+        <HBox focusTraversable="true" prefHeight="92.0" prefWidth="528.0">
             <children>
                 <GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml">
-                    <Button focusTraversable="false" onAction="#upButtonAction" text="↑" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Button onAction="#upButtonAction" text="↑" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                     <Button focusTraversable="false" onAction="#leftButtonAction" text="←" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Button focusTraversable="false" onAction="#rightButtonAction" text="→" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                    <Button focusTraversable="false" onAction="#downButtonAction" text="↓" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Button onAction="#rightButtonAction" text="→" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Button onAction="#downButtonAction" text="↓" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints />
