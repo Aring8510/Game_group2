@@ -1,4 +1,4 @@
-.PHONY:all run
+.PHONY: all run clean
 all: MapData.class MapGame.class MapGameController.class MoveChara.class  
 
 %.class: %.java
@@ -7,3 +7,5 @@ all: MapData.class MapGame.class MapGameController.class MoveChara.class
 run: all
 	java MapGame
 
+clean:
+	-rm -f *.class
