@@ -32,41 +32,30 @@ public class MapGameController implements Initializable {
     private int sec = 0;
     private int min = 0;
     private int initCount = 1;
+    private double rate = 1.0;
+    private AudioClip bgm;
     public ImageView Wiz;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bgm = new AudioClip(Paths.get("BGM/BGM_0.wav").toUri().toString());
+        bgm.setCycleCount(AudioClip.INDEFINITE);
         init();
         timer();
         controlNPC();
     }
 
     private void init(){
-        AudioClip clip_1F;
-        AudioClip clip_2F;
-        AudioClip clip_3F;
-        AudioClip clip_4F;
-        clip_1F = new AudioClip(Paths.get("BGM/BGM_0.wav").toUri().toString());
-        clip_2F = new AudioClip(Paths.get("BGM/BGM_1.wav").toUri().toString());
-        clip_3F = new AudioClip(Paths.get("BGM/BGM_2.wav").toUri().toString());
-        clip_4F = new AudioClip(Paths.get("BGM/BGM_3.wav").toUri().toString());
-        switch(initCount){
-            case 1:
-                clip_1F.play();
-
-                break;
-            case 2:
-                clip_1F.stop();
-                clip_2F.play();
-                break;
-            case 3:
-                clip_2F.stop();
-                clip_3F.play();
-                break;
-            case 4 :
-                clip_3F.stop();
-                clip_4F.play();
+        bgm.stop();
+        if(initCount == 1){
+          rate = 1.0;
+        } else if (rate >= 0.7){
+          rate *= 0.97;
         }
+
+        bgm.setRate(rate);
+        bgm.play();
+
         //マップの初期設定(縦15×横21マス)
         mapData = new MapData(21,15);
         //キャラクターの初期位置設定と画像設定
