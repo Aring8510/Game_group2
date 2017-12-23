@@ -35,6 +35,11 @@ public class MapGameController implements Initializable {
     private double rate = 1.0;
     private AudioClip bgm;
     public ImageView Wiz;
+    public final int TYPE_DOWN  = 0;
+    public final int TYPE_LEFT  = 1;
+    public final int TYPE_RIGHT = 2;
+    public final int TYPE_UP    = 3;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -280,18 +285,31 @@ public class MapGameController implements Initializable {
     }
     public void downButtonAction(){
         //System.out.println("DOWN");
-        chara.setCharaDir(MoveChara.TYPE_DOWN);
-        chara.move(0, 1);
+        chara.setCharaDir(MoveChara.TYPE_DOWN,1);
+        //chara.move(0, 1);
+        switch(chara.getCharaDir()){
+            case TYPE_UP:
+                chara.move(0,1);
+                break;
+            case TYPE_LEFT:
+                chara.move(1,0);
+                break;
+            case TYPE_DOWN:
+                chara.move(0,-1);
+                break;
+            case TYPE_RIGHT:
+                chara.move(-1,0);
+                break;
+        }
         afterMove();
     }
     public void downButtonAction(ActionEvent event) {
-        downButtonAction();
     }
 
     public void rightButtonAction(){
         //System.out.println("RIGHT");
-        chara.setCharaDir(MoveChara.TYPE_RIGHT);
-        chara.move(1, 0);
+        chara.setCharaDir(MoveChara.TYPE_RIGHT,1);
+        //chara.move(1, 0);
         afterMove();
     }
     public void rightButtonAction(ActionEvent event) {
@@ -299,8 +317,22 @@ public class MapGameController implements Initializable {
     }
     public void upButtonAction(){
         //System.out.println("UP");
-        chara.setCharaDir(MoveChara.TYPE_UP);
-        chara.move(0, -1);
+        chara.setCharaDir(MoveChara.TYPE_UP,1);
+        switch(chara.getCharaDir()){
+            case TYPE_UP:
+                chara.move(0,-1);
+                break;
+            case TYPE_LEFT:
+                chara.move(-1,0);
+                break;
+            case TYPE_DOWN:
+                chara.move(0,1);
+                break;
+            case TYPE_RIGHT:
+                chara.move(1,0);
+                break;
+        }
+        //chara.move(0, -1);
         afterMove();
     }
     public void upButtonAction(ActionEvent event) {
@@ -309,8 +341,8 @@ public class MapGameController implements Initializable {
 
     public void leftButtonAction(){
         //System.out.println("LFET");
-        chara.setCharaDir(MoveChara.TYPE_LEFT);
-        chara.move(-1, 0);
+        chara.setCharaDir(MoveChara.TYPE_LEFT,1);
+        //chara.move(-1, 0);
         afterMove();
     }
     public void leftButtonAction(ActionEvent event) {

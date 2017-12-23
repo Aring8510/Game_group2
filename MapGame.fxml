@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox onKeyPressed="#keyAction" prefHeight="610.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapGameController">
+<VBox onKeyPressed="#keyAction" prefHeight="610.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapGameController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
@@ -39,7 +39,14 @@
                 <Button focusTraversable="false" onAction="#func1ButtonAction" prefWidth="100" text="func1" />
                 <Button focusTraversable="false" onAction="#func2ButtonAction" prefWidth="100" text="func2" />
                 <Button focusTraversable="false" onAction="#func3ButtonAction" prefWidth="100" text="func3" />
-                  <ImageView fx:id="Wiz" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+              <GridPane fx:id="mapGrid" prefHeight="106.0" prefWidth="124.0">
+               <columnConstraints>
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
                 <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
                     <items>
                         <Label fx:id="floor" alignment="CENTER" graphicTextGap="3.0" prefHeight="44.0" prefWidth="158.0" text="B1">
@@ -56,8 +63,7 @@
                 </SplitPane>
             </children>
         </HBox>
-        <GridPane fx:id="mapGrid" prefHeight="457.0" prefWidth="684.0">
-        </GridPane>
+            <ImageView fx:id="Wiz" fitHeight="484.0" fitWidth="689.0" pickOnBounds="true" preserveRatio="true" />
 
     </children>
 </VBox>

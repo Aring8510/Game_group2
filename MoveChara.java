@@ -20,18 +20,18 @@ public class MoveChara {
     MoveChara(int startX, int startY, MapData mapData){
         this.mapData = mapData;
         charaImage = new Image[12];
-        charaImage[0 * 3 + 0] = new Image("pic/nekod1.png");
-        charaImage[0 * 3 + 1] = new Image("pic/nekod2.png");
-        charaImage[0 * 3 + 2] = new Image("pic/nekod3.png");
-        charaImage[1 * 3 + 0] = new Image("pic/nekol1.png");
-        charaImage[1 * 3 + 1] = new Image("pic/nekol2.png");
-        charaImage[1 * 3 + 2] = new Image("pic/nekol3.png");
-        charaImage[2 * 3 + 0] = new Image("pic/nekor1.png");
-        charaImage[2 * 3 + 1] = new Image("pic/nekor2.png");
-        charaImage[2 * 3 + 2] = new Image("pic/nekor3.png");
-        charaImage[3 * 3 + 0] = new Image("pic/nekou1.png");
-        charaImage[3 * 3 + 1] = new Image("pic/nekou2.png");
-        charaImage[3 * 3 + 2] = new Image("pic/nekou3.png");
+        charaImage[0 * 3 + 0] = new Image("pic/nekod1.jpg");
+        charaImage[0 * 3 + 1] = new Image("pic/nekod2.jpg");
+        charaImage[0 * 3 + 2] = new Image("pic/nekod3.jpg");
+        charaImage[1 * 3 + 0] = new Image("pic/nekol1.jpg");
+        charaImage[1 * 3 + 1] = new Image("pic/nekol2.jpg");
+        charaImage[1 * 3 + 2] = new Image("pic/nekol3.jpg");
+        charaImage[2 * 3 + 0] = new Image("pic/nekor1.jpg");
+        charaImage[2 * 3 + 1] = new Image("pic/nekor2.jpg");
+        charaImage[2 * 3 + 2] = new Image("pic/nekor3.jpg");
+        charaImage[3 * 3 + 0] = new Image("pic/nekou1.jpg");
+        charaImage[3 * 3 + 1] = new Image("pic/nekou2.jpg");
+        charaImage[3 * 3 + 2] = new Image("pic/nekou3.jpg");
 
         posX = startX;
         posY = startY;
@@ -65,8 +65,43 @@ public class MoveChara {
         return posY;
     }
 
+    //敵だけが使う
     public void setCharaDir(int cd){
         charaDir = cd;
+    }
+    //自機のみが使う
+    public void setCharaDir(int cd,int n){
+        if(cd == TYPE_RIGHT){
+            switch(charaDir){
+                case TYPE_UP:
+                    charaDir = TYPE_RIGHT;
+                    break;
+                case TYPE_LEFT:
+                    charaDir = TYPE_UP;
+                    break;
+                case TYPE_DOWN:
+                    charaDir = TYPE_LEFT;
+                    break;
+                case TYPE_RIGHT:
+                    charaDir = TYPE_DOWN;
+                    break;
+            }
+        }else if(cd == TYPE_LEFT){
+            switch(charaDir){
+                case TYPE_UP:
+                    charaDir = TYPE_LEFT;
+                    break;
+                case TYPE_LEFT:
+                    charaDir = TYPE_DOWN;
+                    break;
+                case TYPE_DOWN:
+                    charaDir = TYPE_RIGHT;
+                    break;
+                case TYPE_RIGHT:
+                    charaDir = TYPE_UP;
+                    break;
+            }
+        }
     }
 
     public boolean canMove(int dx, int dy){
