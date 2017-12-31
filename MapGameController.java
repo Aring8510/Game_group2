@@ -39,6 +39,7 @@ public class MapGameController implements Initializable {
     public final int TYPE_LEFT  = 1;
     public final int TYPE_RIGHT = 2;
     public final int TYPE_UP    = 3;
+    public Timeline timeline;
 
 
     @Override
@@ -88,7 +89,7 @@ public class MapGameController implements Initializable {
     }
 
     public void controlNPC(){
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
+        timeline = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
             final int x = enemy.getPosX();
             final int y = enemy.getPosY();
             int minIndex = 0;
@@ -200,13 +201,13 @@ public class MapGameController implements Initializable {
             if (right == 0){
                 if (left == 0){
                     if (ahead == 0){
-                        s = "pic/3.png";
+                        s = "pic/3.jpg";
                     }else{
-                        s = "pic/6.png";
+                        s = "pic/6.jpg";
                     }
                 }else{
                     if (ahead == 0){
-                        s = "pic/2.png";
+                        s = "pic/2.jpg";
                     }else{
                         s = "pic/5.png";
                     }
@@ -214,15 +215,15 @@ public class MapGameController implements Initializable {
             }else{
                 if (left == 0){
                     if (ahead == 0){
-                        s = "pic/4.png";
+                        s = "pic/4.jpg";
                     }else{
                         s = "pic/8.png";
                     }
                 }else{
                     if (ahead == 0){
-                        s = "pic/0.png";
+                        s = "pic/0.jpg";
                     }else{
-                        s = "pic/1.png";
+                        s = "pic/1.jpg";
                     }
                 }
             }
@@ -354,6 +355,8 @@ public class MapGameController implements Initializable {
             initCount++;
             floor.setText("B"+initCount);
             init();
+        }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()){
+            timeline.stop();
         }
     }
 }
