@@ -281,7 +281,6 @@ public class MapGameController implements Initializable {
     public void downButtonAction(){
         //System.out.println("DOWN");
         chara.setCharaDir(MoveChara.TYPE_DOWN,1);
-        //chara.move(0, 1);
         switch(chara.getCharaDir()){
             case TYPE_UP:
                 chara.move(0,1);
@@ -304,7 +303,6 @@ public class MapGameController implements Initializable {
     public void rightButtonAction(){
         //System.out.println("RIGHT");
         chara.setCharaDir(MoveChara.TYPE_RIGHT,1);
-        //chara.move(1, 0);
         afterMove();
     }
     public void rightButtonAction(ActionEvent event) {
@@ -327,7 +325,6 @@ public class MapGameController implements Initializable {
                 chara.move(1,0);
                 break;
         }
-        //chara.move(0, -1);
         afterMove();
     }
     public void upButtonAction(ActionEvent event) {
@@ -337,7 +334,6 @@ public class MapGameController implements Initializable {
     public void leftButtonAction(){
         //System.out.println("LFET");
         chara.setCharaDir(MoveChara.TYPE_LEFT,1);
-        //chara.move(-1, 0);
         afterMove();
     }
     public void leftButtonAction(ActionEvent event) {
