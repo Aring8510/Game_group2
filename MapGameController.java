@@ -113,8 +113,8 @@ public class MapGameController implements Initializable {
                     enemy.move(0,-1);
                     break;
                 case "left":
-                    enemy.setCharaDir(MoveChara.TYPE_LEFT);
                     map[y][x]++;
+                    enemy.setCharaDir(MoveChara.TYPE_LEFT);
                     enemy.move(-1,0);
                     break;
                 case "down":
@@ -225,8 +225,7 @@ public class MapGameController implements Initializable {
         }else{
             s = "pic/7.png";
         }
-        Image i = new Image (getClass().getResourceAsStream(s));
-        return i; 
+        return new Image (getClass().getResourceAsStream(s));
     }
     public void timer(){
         Timeline timer = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
