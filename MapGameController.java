@@ -74,10 +74,10 @@ public class MapGameController implements Initializable {
                 mapGrid.add(mapImageView[index], x, y);
             }
         }
-        map = new int[16][22];
-        for(int y=0; y<15; y++){
-            for(int x=0; x<21; x++){
-                if(mapData.getMap(x,y) == 1 ){
+        map = new int[mapData.getHeight()][mapData.getWidth()];
+        for(int y=0; y<mapData.getHeight(); y++){
+            for(int x=0; x<mapData.getWidth(); x++){
+                if(mapData.getMap(x,y) == MapData.TYPE_WALL ){
                     map[y][x] = -1;
                 }else{
                     map[y][x] = 0;
