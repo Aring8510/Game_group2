@@ -1,13 +1,10 @@
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
-import javafx.application.Application;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.ActionEvent; 
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,9 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
-import javafx.scene.media.*;
-import java.nio.file.*;
 
 
 public class MapGameController implements Initializable {
