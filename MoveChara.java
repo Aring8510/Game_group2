@@ -8,13 +8,13 @@ public class MoveChara {
 
     protected int posX;
     protected int posY;
+    protected int charaDir;
 
     protected MapData mapData;
 
     private Image[] charaImage;
     private int count   = 0;
     private int diffx   = 1;
-    private int charaDir;
     private int itemCount;
 
     MoveChara(int startX, int startY, MapData mapData){
@@ -65,12 +65,7 @@ public class MoveChara {
         return posY;
     }
 
-    //敵だけが使う
     public void setCharaDir(int cd){
-        charaDir = cd;
-    }
-    //自機のみが使う
-    public void setCharaDir(int cd,int n){
         if(cd == TYPE_RIGHT){
             switch(charaDir){
                 case TYPE_UP:

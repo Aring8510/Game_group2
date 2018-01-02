@@ -24,9 +24,6 @@ public class MapData {
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
         map[toIndex(19,13)] = TYPE_STEP;
-        setItem();
-        /*マップ生成確認のためと思われる
-          printMap();*/
     }
     public int getHeight(){
         return height;
@@ -100,21 +97,6 @@ public class MapData {
                 }
             }
 
-        }
-    }
-    public void setItem(){
-    }
-
-    public void printMap(){
-        for (int y=0; y<height; y++){
-            for (int x=0; x<width; x++){
-                if (getMap(x,y) == MapData.TYPE_WALL){
-                    System.out.print("++");
-                }else{
-                    System.out.print("  ");
-                }
-            }
-            System.out.print("\n");
         }
     }
 }

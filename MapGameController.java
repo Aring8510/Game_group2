@@ -1,13 +1,10 @@
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
-import javafx.application.Application;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.ActionEvent; 
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,9 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
-import javafx.scene.media.*;
-import java.nio.file.*;
 
 
 public class MapGameController implements Initializable {
@@ -74,10 +70,10 @@ public class MapGameController implements Initializable {
                 mapGrid.add(mapImageView[index], x, y);
             }
         }
-        map = new int[16][22];
-        for(int y=0; y<15; y++){
-            for(int x=0; x<21; x++){
-                if(mapData.getMap(x,y) == 1 ){
+        map = new int[mapData.getHeight()][mapData.getWidth()];
+        for(int y=0; y<mapData.getHeight(); y++){
+            for(int x=0; x<mapData.getWidth(); x++){
+                if(mapData.getMap(x,y) == MapData.TYPE_WALL ){
                     map[y][x] = -1;
                 }else{
                     map[y][x] = 0;
@@ -117,8 +113,8 @@ public class MapGameController implements Initializable {
                     enemy.move(0,-1);
                     break;
                 case "left":
-                    enemy.setCharaDir(MoveChara.TYPE_LEFT);
                     map[y][x]++;
+                    enemy.setCharaDir(MoveChara.TYPE_LEFT);
                     enemy.move(-1,0);
                     break;
                 case "down":
@@ -229,8 +225,7 @@ public class MapGameController implements Initializable {
         }else{
             s = "pic/7.png";
         }
-        Image i = new Image (getClass().getResourceAsStream(s));
-        return i; 
+        return new Image (getClass().getResourceAsStream(s));
     }
     public void timer(){
         Timeline timer = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
@@ -285,8 +280,7 @@ public class MapGameController implements Initializable {
     }
     public void downButtonAction(){
         //System.out.println("DOWN");
-        chara.setCharaDir(MoveChara.TYPE_DOWN,1);
-        //chara.move(0, 1);
+        chara.setCharaDir(MoveChara.TYPE_DOWN);
         switch(chara.getCharaDir()){
             case TYPE_UP:
                 chara.move(0,1);
@@ -308,8 +302,7 @@ public class MapGameController implements Initializable {
 
     public void rightButtonAction(){
         //System.out.println("RIGHT");
-        chara.setCharaDir(MoveChara.TYPE_RIGHT,1);
-        //chara.move(1, 0);
+        chara.setCharaDir(MoveChara.TYPE_RIGHT);
         afterMove();
     }
     public void rightButtonAction(ActionEvent event) {
@@ -317,7 +310,7 @@ public class MapGameController implements Initializable {
     }
     public void upButtonAction(){
         //System.out.println("UP");
-        chara.setCharaDir(MoveChara.TYPE_UP,1);
+        chara.setCharaDir(MoveChara.TYPE_UP);
         switch(chara.getCharaDir()){
             case TYPE_UP:
                 chara.move(0,-1);
@@ -332,7 +325,6 @@ public class MapGameController implements Initializable {
                 chara.move(1,0);
                 break;
         }
-        //chara.move(0, -1);
         afterMove();
     }
     public void upButtonAction(ActionEvent event) {
@@ -341,8 +333,7 @@ public class MapGameController implements Initializable {
 
     public void leftButtonAction(){
         //System.out.println("LFET");
-        chara.setCharaDir(MoveChara.TYPE_LEFT,1);
-        //chara.move(-1, 0);
+        chara.setCharaDir(MoveChara.TYPE_LEFT);
         afterMove();
     }
     public void leftButtonAction(ActionEvent event) {
