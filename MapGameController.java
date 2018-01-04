@@ -31,10 +31,6 @@ public class MapGameController implements Initializable {
     private double rate = 1.0;
     private AudioClip bgm,se;
     public ImageView Wiz;
-    public final int TYPE_DOWN  = 0;
-    public final int TYPE_LEFT  = 1;
-    public final int TYPE_RIGHT = 2;
-    public final int TYPE_UP    = 3;
     public Timeline timeline;
 
 
@@ -284,16 +280,16 @@ public class MapGameController implements Initializable {
         //System.out.println("DOWN");
         chara.setCharaDir(MoveChara.TYPE_DOWN);
         switch(chara.getCharaDir()){
-            case TYPE_UP:
+            case MoveChara.TYPE_UP:
                 chara.move(0,1);
                 break;
-            case TYPE_LEFT:
+            case MoveChara.TYPE_LEFT:
                 chara.move(1,0);
                 break;
-            case TYPE_DOWN:
+            case MoveChara.TYPE_DOWN:
                 chara.move(0,-1);
                 break;
-            case TYPE_RIGHT:
+            case MoveChara.TYPE_RIGHT:
                 chara.move(-1,0);
                 break;
         }
@@ -314,16 +310,16 @@ public class MapGameController implements Initializable {
         //System.out.println("UP");
         chara.setCharaDir(MoveChara.TYPE_UP);
         switch(chara.getCharaDir()){
-            case TYPE_UP:
+            case MoveChara.TYPE_UP:
                 chara.move(0,-1);
                 break;
-            case TYPE_LEFT:
+            case MoveChara.TYPE_LEFT:
                 chara.move(-1,0);
                 break;
-            case TYPE_DOWN:
+            case MoveChara.TYPE_DOWN:
                 chara.move(0,1);
                 break;
-            case TYPE_RIGHT:
+            case MoveChara.TYPE_RIGHT:
                 chara.move(1,0);
                 break;
         }
