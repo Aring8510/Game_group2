@@ -1,5 +1,5 @@
 .PHONY: all run clean
-all: MapData.class MapGame.class MapGameController.class MoveChara.class  
+all: MapData.class MapGame.class MapGameController.class MoveChara.class Enemy.class 
 
 %.class: %.java
 	javac $^

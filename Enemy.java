@@ -21,4 +21,9 @@ class Enemy extends MoveChara {
         }
     }
 
+    @Override
+    public void setCharaDir(int cd){
+      charaDir = cd;
+    }
+
 }

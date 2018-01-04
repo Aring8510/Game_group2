@@ -5,6 +5,7 @@ public class MapData {
     public static final int TYPE_NONE   = 0;
     public static final int TYPE_ITEM = 2;
     public static final int TYPE_STEP = 3;
+    public static final int TYPE_BLACK=4;
     public Image[] mapImage;
     private int[] map;
     private int[] map2image;
@@ -13,20 +14,21 @@ public class MapData {
     private int item_count = 3;
 
     MapData(int x, int y){ 
-        mapImage = new Image[4];
-        mapImage[TYPE_NONE] = new Image("pic/SPACE.png");
-        mapImage[TYPE_WALL] = new Image("pic/WALL.png");
+        mapImage = new Image[5];
+        mapImage[TYPE_NONE] = new Image("pic/SPACE.jpg");
+        mapImage[TYPE_WALL] = new Image("pic/WALL.jpg");
         mapImage[TYPE_ITEM] = new Image("pic/mig.jpg");
-        mapImage[TYPE_STEP] = new Image("pic/step.png");
+        mapImage[TYPE_STEP] = new Image("pic/step.jpg");
+        mapImage[TYPE_BLACK]= new Image("pic/BLACK.jpg");
         width  = x;
         height = y;
         map = new int[y*x];
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
         map[toIndex(19,13)] = TYPE_STEP;
-        setItem();
-        /*マップ生成確認のためと思われる
-          printMap();*/
+    }
+    public Image getBlack(){
+        return mapImage[TYPE_BLACK];
     }
     public int getHeight(){
         return height;
@@ -100,21 +102,6 @@ public class MapData {
                 }
             }
 
-        }
-    }
-    public void setItem(){
-    }
-
-    public void printMap(){
-        for (int y=0; y<height; y++){
-            for (int x=0; x<width; x++){
-                if (getMap(x,y) == MapData.TYPE_WALL){
-                    System.out.print("++");
-                }else{
-                    System.out.print("  ");
-                }
-            }
-            System.out.print("\n");
         }
     }
 }
