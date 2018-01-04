@@ -225,7 +225,7 @@ public class MapGameController implements Initializable {
                 }
             }
         }else{
-            s = "pic/7.png";
+            s = "pic/7.jpg";
         }
         return new Image (getClass().getResourceAsStream(s));
     }
