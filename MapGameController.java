@@ -32,7 +32,8 @@ public class MapGameController implements Initializable {
     private AudioClip bgm,se;
     public ImageView Wiz;
     public Timeline timeline;
-
+    int mutekiSec = 0;
+    boolean mutekiFlag = true; 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -272,7 +273,7 @@ public class MapGameController implements Initializable {
             clock.setText(String.format("%d:%02d",min,sec));
             sec--;
             if(sec < 0){
-                sec = 59-sec;
+                sec = 60+sec;
                 min--;
             }
             if (sec<=0&&min<=0){
@@ -280,6 +281,10 @@ public class MapGameController implements Initializable {
                 Wiz.setImage(new Image (getClass().getResourceAsStream("pic/GameOver.jpg")));
                 initCount = 4;
             }
+            if (sec == mutekiSec&&!mutekiFlag){
+                mutekiFlag =true;
+            }
+            System.out.println(mutekiFlag);
         }
         ));
         timer.setCycleCount(Animation.INDEFINITE);
@@ -408,12 +413,18 @@ public class MapGameController implements Initializable {
             if (initCount<4){
                 init();
             }
-        }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()){
+        }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()&&mutekiFlag){
             se.play();
             Wiz.setImage(new Image (getClass().getResourceAsStream("pic/cat.jpg")));
+            sec -= 10;//10秒減少
             //timeline.stop();
-            //int mutekiSec = sec;
-            //int mutekiMin = min;
+            if (sec-10<0){//10秒無敵
+                mutekiSec = 60+sec-10;
+            }else{
+                mutekiSec = sec-10;
+            }
+            System.out.println(mutekiSec);
+            mutekiFlag = false;
         }
     }
 }
