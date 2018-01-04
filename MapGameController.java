@@ -45,14 +45,16 @@ public class MapGameController implements Initializable {
     }
 
     private void init(){
+        System.out.println("init called");
         bgm.stop();
-        timeline.play();
+        if (initCount < 4 ){
+            timeline.play();
+        }
         if(initCount == 1){
           rate = 1.0;
         } else if (rate >= 0.7){
           rate *= 0.97;
         }
-
         bgm.setRate(rate);
         bgm.play();
 
@@ -378,11 +380,20 @@ public class MapGameController implements Initializable {
         leftButtonAction();
     }
     public void afterMove(){
-        mapPrint();
+        
+        if (initCount<4){
+            mapPrint();
+        }
         if(chara.getPosX() == 19 && chara.getPosY() == 13 && chara.getItemCount() >= 3){
             initCount++;
+            if (initCount == 4 ){
+                Wiz.setImage(new Image (getClass().getResourceAsStream("pic/clear.jpg")));
+                timeline.stop();
+            }
             floor.setText("B"+initCount);
-            init();
+            if (initCount<4){
+                init();
+            }
         }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()){
             se.play();
             Wiz.setImage(new Image (getClass().getResourceAsStream("pic/cat.jpg")));
