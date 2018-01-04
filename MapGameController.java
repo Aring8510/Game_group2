@@ -25,8 +25,8 @@ public class MapGameController implements Initializable {
     public ImageView[] mapImageView;
     public Label floor;
     public Label clock;
-    private int sec = 0;
-    private int min = 0;
+    private int sec = 10;
+    private int min = 3;
     private int initCount = 1;
     private double rate = 1.0;
     private AudioClip bgm,se;
@@ -270,10 +270,15 @@ public class MapGameController implements Initializable {
     public void timer(){
         Timeline timer = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
             clock.setText(String.format("%d:%02d",min,sec));
-            sec++;
-            if(sec >= 60){
-                sec = 0;
-                min++;
+            sec--;
+            if(sec < 0){
+                sec = 59-sec;
+                min--;
+            }
+            if (sec<=0&&min<=0){
+                System.out.println("TimeOver");
+                Wiz.setImage(new Image (getClass().getResourceAsStream("pic/GameOver.jpg")));
+                initCount = 4;
             }
         }
         ));
@@ -406,7 +411,9 @@ public class MapGameController implements Initializable {
         }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()){
             se.play();
             Wiz.setImage(new Image (getClass().getResourceAsStream("pic/cat.jpg")));
-            timeline.stop();
+            //timeline.stop();
+            //int mutekiSec = sec;
+            //int mutekiMin = min;
         }
     }
 }
