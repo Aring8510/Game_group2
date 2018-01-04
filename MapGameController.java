@@ -190,16 +190,26 @@ public class MapGameController implements Initializable {
     }
     public Image WizCheck(int front, int ahead, int right, int left){
         String s;
-        if (front == 0){
+        if (front == 3){
+            if (right == 1){
+                if (left == 1){
+                    s = "pic/straight.jpg";
+                }else{
+                    s = "pic/left.jpg";
+                }
+            }else{
+                s = "pic/right.jpg";
+            }
+        } else if (front == 0){
             if (right == 0){
                 if (left == 0){
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/3.jpg";
                     }else{
                         s = "pic/6.jpg";
                     }
                 }else{
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/2.jpg";
                     }else{
                         s = "pic/5.jpg";
@@ -207,13 +217,13 @@ public class MapGameController implements Initializable {
                 }
             }else{
                 if (left == 0){
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/4.jpg";
                     }else{
                         s = "pic/8.jpg";
                     }
                 }else{
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/0.jpg";
                     }else{
                         s = "pic/1.jpg";
@@ -223,13 +233,13 @@ public class MapGameController implements Initializable {
         }else if (front==2){
             if (right == 0){
                 if (left == 0){
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/12.jpg";
                     }else{
                         s = "pic/15.jpg";
                     }
                 }else{
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/11.jpg";
                     }else{
                         s = "pic/14.jpg";
@@ -237,13 +247,13 @@ public class MapGameController implements Initializable {
                 }
             }else{
                 if (left == 0){
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/13.jpg";
                     }else{
                         s = "pic/17.jpg";
                     }
                 }else{
-                    if (ahead == 0 || ahead == 2){
+                    if (ahead == 0 || ahead == 2 || ahead == 3){
                         s = "pic/9.jpg";
                     }else{
                         s = "pic/10.jpg";
