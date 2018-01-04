@@ -29,25 +29,28 @@ public class MapGameController implements Initializable {
     private int min = 0;
     private int initCount = 1;
     private double rate = 1.0;
-    private AudioClip bgm;
+    private AudioClip bgm,se;
     public ImageView Wiz;
     public final int TYPE_DOWN  = 0;
     public final int TYPE_LEFT  = 1;
     public final int TYPE_RIGHT = 2;
     public final int TYPE_UP    = 3;
+    public Timeline timeline;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         bgm = new AudioClip(Paths.get("BGM/BGM_0.wav").toUri().toString());
         bgm.setCycleCount(AudioClip.INDEFINITE);
+        se = new AudioClip(Paths.get("SE/nya.wav").toUri().toString());
+        controlNPC();
         init();
         timer();
-        controlNPC();
     }
 
     private void init(){
         bgm.stop();
+        timeline.play();
         if(initCount == 1){
           rate = 1.0;
         } else if (rate >= 0.7){
@@ -84,7 +87,7 @@ public class MapGameController implements Initializable {
     }
 
     public void controlNPC(){
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
+        timeline = new Timeline(new KeyFrame(Duration.millis(1000), (ActionEvent) -> {
             final int x = enemy.getPosX();
             final int y = enemy.getPosY();
             int minIndex = 0;
@@ -129,7 +132,7 @@ public class MapGameController implements Initializable {
                     break;
             }
 
-            for(int Y =0;Y<15;Y++){
+            /*for(int Y =0;Y<15;Y++){
                 for(int X =0;X<21; X++){
                     if(map[Y][X] == -1){
                         System.out.print("*"+" ");
@@ -140,12 +143,11 @@ public class MapGameController implements Initializable {
                     }
                 }
                 System.out.println();
-            }
+            }*/
             enemyPrint(x, y);
         }
         ));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
     public void printWizMap(){
         int dir = chara.getCharaDir();
@@ -196,13 +198,13 @@ public class MapGameController implements Initializable {
             if (right == 0){
                 if (left == 0){
                     if (ahead == 0){
-                        s = "pic/3.png";
+                        s = "pic/3.jpg";
                     }else{
-                        s = "pic/6.png";
+                        s = "pic/6.jpg";
                     }
                 }else{
                     if (ahead == 0){
-                        s = "pic/2.png";
+                        s = "pic/2.jpg";
                     }else{
                         s = "pic/5.png";
                     }
@@ -210,15 +212,15 @@ public class MapGameController implements Initializable {
             }else{
                 if (left == 0){
                     if (ahead == 0){
-                        s = "pic/4.png";
+                        s = "pic/4.jpg";
                     }else{
                         s = "pic/8.png";
                     }
                 }else{
                     if (ahead == 0){
-                        s = "pic/0.png";
+                        s = "pic/0.jpg";
                     }else{
-                        s = "pic/1.png";
+                        s = "pic/1.jpg";
                     }
                 }
             }
@@ -345,6 +347,10 @@ public class MapGameController implements Initializable {
             initCount++;
             floor.setText("B"+initCount);
             init();
+        }else if(chara.getPosX() == enemy.getPosX() && chara.getPosY() == enemy.getPosY()){
+            se.play();
+            Wiz.setImage(new Image (getClass().getResourceAsStream("pic/cat.jpg")));
+            timeline.stop();
         }
     }
 }
