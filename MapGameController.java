@@ -210,7 +210,7 @@ public class MapGameController implements Initializable {
                     if (ahead == 0){
                         s = "pic/2.jpg";
                     }else{
-                        s = "pic/5.png";
+                        s = "pic/5.jpg";
                     }
                 }
             }else{
@@ -218,7 +218,7 @@ public class MapGameController implements Initializable {
                     if (ahead == 0){
                         s = "pic/4.jpg";
                     }else{
-                        s = "pic/8.png";
+                        s = "pic/8.jpg";
                     }
                 }else{
                     if (ahead == 0){
