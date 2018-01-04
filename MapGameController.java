@@ -284,13 +284,22 @@ public class MapGameController implements Initializable {
     public void mapPrint(){
         for(int y=0; y<mapData.getHeight(); y++){
             for(int x=0; x<mapData.getWidth(); x++){
+                double distance = Math.sqrt((x - chara.getPosX())*(x - chara.getPosX()) + (y - chara.getPosY())*(y - chara.getPosY()));
                 final int index = y*mapData.getWidth() + x;
                 if (x == chara.getPosX() && y == chara.getPosY() ){
                     mapImageView[index].setImage(chara.getImage());
                 } else if (x == enemy.getPosX() && y == enemy.getPosY()){
                     // do nothing
                 } else {
-                    mapImageView[index].setImage(mapData.getImage(x,y));
+                    if(initCount == 3){
+                        if(distance > 2){
+                            mapImageView[index].setImage(mapData.getBlack());
+                        }else{
+                            mapImageView[index].setImage(mapData.getImage(x,y));
+                        }
+                    }else{
+                        mapImageView[index].setImage(mapData.getImage(x,y));
+                    }
                 }
             }
         }
